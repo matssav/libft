@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msavaris <msavaris@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 12:01:14 by msavaris          #+#    #+#             */
-/*   Updated: 2021/10/22 17:47:37 by msavaris         ###   ########.fr       */
+/*   Created: 2021/11/03 13:40:04 by msavaris          #+#    #+#             */
+/*   Updated: 2021/11/03 13:40:16 by msavaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,11 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char		*last;
-	char		find;
-	size_t		i;
+	int		i;
 
-	last = (char *)s;
-	find = (char)c;
-	i = ft_strlen(s);
-	while (i > 0)
-	{
-		if (last[i] == find)
-			return (last + i);
-		i--;
-	}
-	if (last[i] == find)
-		return (last);
-	return (0);
+	i = (int)ft_strlen(s) + 1;
+	while (i--)
+		if (*(s + i) == (char)c)
+			return ((char *)s + i);
+	return (NULL);
 }

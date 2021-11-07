@@ -5,22 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msavaris <msavaris@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 14:07:00 by msavaris          #+#    #+#             */
-/*   Updated: 2021/10/22 14:09:18 by msavaris         ###   ########.fr       */
+/*   Created: 2021/11/03 13:37:28 by msavaris          #+#    #+#             */
+/*   Updated: 2021/11/03 13:37:28 by msavaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ptr;
+	void	*rtn;
 
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
+	rtn = malloc(size * count);
+	if (!rtn)
 		return (NULL);
-	ft_memset((unsigned char *)ptr, 0, nmemb * size);
-	return (ptr);
+	ft_bzero(rtn, count);
+	return (rtn);
 }

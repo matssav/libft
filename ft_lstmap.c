@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msavaris <msavaris@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 16:50:16 by msavaris          #+#    #+#             */
-/*   Updated: 2021/10/29 00:47:40 by msavaris         ###   ########.fr       */
+/*   Created: 2021/11/03 13:14:06 by msavaris          #+#    #+#             */
+/*   Updated: 2021/11/03 13:15:02 by msavaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,26 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list		*new;
-	t_list		*head;
-	t_list		*tail;
+	t_list	*tmp;
+	t_list	*ret;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	head = NULL;
-	new = ft_lstnew(f(lst->content));
-	if (!(new))
-		return (NULL);
-	ft_lstadd_back(&head, new);
-	tail = head;
+	if (!lst)
+		return (0);
+	ret = ft_lstnew((*f)(lst->content));
+	if (!(ret))
+		return (0);
+	tmp = ret;
 	lst = lst->next;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
-		if (!(new))
+		tmp->next = ft_lstnew((*f)(lst->content));
+		if (!(tmp->next))
 		{
-			ft_lstclear(&head, del);
-			return (NULL);
+			ft_lstclear(&ret, del);
+			return (0);
 		}
-		ft_lstadd_back(&tail, new);
-		tail = tail->next;
+		tmp = tmp->next;
 		lst = lst->next;
 	}
-	return (head);
+	return (ret);
 }

@@ -6,13 +6,13 @@
 /*   By: msavaris <msavaris@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 16:41:47 by msavaris          #+#    #+#             */
-/*   Updated: 2021/10/22 16:41:48 by msavaris         ###   ########.fr       */
+/*   Updated: 2021/11/03 13:09:54 by msavaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strncpy(char *dst, const char *src, size_t n)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
 	size_t	i;
 
